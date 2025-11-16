@@ -28,9 +28,12 @@ HH:MM:SS USER End
 🛠️ How to Build & Run
 
 There is no build step.
+
 The program is a pure Python script run directly from the command line.
 
+
 Run Command
+
 python session_report.py path/to/logfile.txt
 
 
