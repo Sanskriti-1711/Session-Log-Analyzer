@@ -16,6 +16,7 @@ While handling missing Start/End events, overlapping sessions, and invalid log l
 
 This tool implements all rules from the coding challenge specification and guarantees output consistent with the minimum possible interpretation of session durations.
 
+
 ✔️ Problem Summary
 
 The log file contains lines like:
@@ -35,6 +36,7 @@ python session_report.py path/to/logfile.txt
 
 
 🧠 Rules Implemented in the Code
+
 ✔️ Valid Line
 
 A line must contain exactly:
