@@ -24,21 +24,49 @@ HH:MM:SS USER Start
 HH:MM:SS USER End
 
 
-But:
+🛠️ How to Build & Run
 
-Start and End are not paired
+There is no build step.
+The program is a pure Python script run directly from the command line.
 
-Some sessions may be missing Start or End
+Run Command
+python session_report.py path/to/logfile.txt
 
-Sessions may overlap
 
-Some lines may be invalid and must be ignored
 
-Log boundaries may cut off earlier/later sessions
+🧠 Rules Implemented in the Code
+✔️ Valid Line
 
-The program must reconstruct a consistent, minimum-duration explanation and report:
+A line must contain exactly:
 
-USERNAME SESSIONS TOTAL_DURATION_SECONDS
+HH:MM:SS  USERNAME  Start|End
 
+
+otherwise it is ignored.
+
+✔️ Missing Start
+
+If an End is encountered with no available Start, the Start time is assumed to be the earliest timestamp in the file.
+
+✔️ Missing End
+
+If a Start remains unmatched after reading the entire file, its End time becomes the latest timestamp in the file.
+
+✔️ Overlapping Sessions
+
+Managed using a LIFO stack per user.
+
+Example:
+
+Start
+Start
+End → matches latest Start
+End → matches remaining Start
+
+✔️ Invalid or Irrelevant Lines
+
+Silently ignored, per the problem specification.
+
+✔️ Output
 
 Sorted alphabetically by username.
